@@ -1,6 +1,7 @@
 # Log to TXT Converter
 
-Log to TXT Converter is a web-based tool that allows users to easily convert .log files to .txt format. Built with Next.js and React, this application provides a simple and intuitive interface for uploading log files, converting them, and downloading the results.
+Log to TXT Converter is a web-based tool that allows users to easily convert .log files to .txt format.
+Built with Next.js and React, this application provides a simple and intuitive interface for uploading log files, converting them, and downloading the results.
 
 ## Features
 
