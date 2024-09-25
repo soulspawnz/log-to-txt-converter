@@ -71,6 +71,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Project Structure
 
+```text
 log-to-txt-converter/
 ├── app/
 │ ├── api/
@@ -87,6 +88,7 @@ log-to-txt-converter/
 │ └── fileUtils.ts
 ├── package.json
 └── ... # Other configuration files
+```
 
 ## Technologies Used
 
