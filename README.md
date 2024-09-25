@@ -22,7 +22,7 @@ Log to TXT Converter is a web-based tool that allows users to easily convert .lo
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/log-to-txt-converter.git
+   git clone github.com/soulspawnz/log-to-txt-converter.git
    ```
 
 2. Navigate to the project directory:
@@ -64,7 +64,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 1. Open the application in your web browser.
 2. Click on the "Upload .log files" input or drag and drop your .log files onto it.
 3. Select one or more .log files to upload.
-4. The files will be automatically converted to .txt format.
+4. After interacting with the Convert button, the .log files will be converted to .txt format.
 5. Once converted, you can download individual files by clicking the "Download" button next to each file name.
 6. To download all converted files at once, click the "Download All" button.
 
