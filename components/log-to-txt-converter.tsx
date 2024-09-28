@@ -51,7 +51,7 @@ export function LogToTxtConverter() {
     setUploadedFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
     // Reset the file input to allow re-uploading of the same file
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
@@ -59,7 +59,7 @@ export function LogToTxtConverter() {
     setUploadedFiles([]);
     // Reset the file input to allow re-uploading of the same files
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
@@ -73,7 +73,9 @@ export function LogToTxtConverter() {
 
   const mergeLogFiles = async () => {
     if (uploadedFiles.length < 2) {
-      setError("Insufficient files for merge operation. Minimum requirement: 2 files.");
+      setError(
+        "Insufficient files for merge operation. Minimum requirement: 2 files."
+      );
       return;
     }
 
@@ -102,7 +104,11 @@ export function LogToTxtConverter() {
       );
     } catch (error) {
       console.error("Error merging log files:", error);
-      setError(`Error encountered during log file merge operation: ${error instanceof Error ? error.message : String(error)}. Please attempt the operation again.`);
+      setError(
+        `Error encountered during log file merge operation: ${
+          error instanceof Error ? error.message : String(error)
+        }. Please attempt the operation again.`
+      );
     }
   };
 
@@ -141,7 +147,11 @@ export function LogToTxtConverter() {
       }
     } catch (error) {
       console.error("Error converting files:", error);
-      setError(`An error occurred while converting files: ${error instanceof Error ? error.message : String(error)}`);
+      setError(
+        `An error occurred while converting files: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
     } finally {
       setIsConverting(false);
     }
@@ -153,7 +163,9 @@ export function LogToTxtConverter() {
         `/api/download?filename=${encodeURIComponent(fileName)}`
       );
       if (!response.ok) {
-        throw new Error(`HTTP request failed with status ${response.status}. Server responded with non-200 status code, indicating failure to retrieve the requested resource.`);
+        throw new Error(
+          `HTTP request failed with status ${response.status}. Server responded with non-200 status code, indicating failure to retrieve the requested resource.`
+        );
       }
 
       const blob = await response.blob();
@@ -167,7 +179,9 @@ export function LogToTxtConverter() {
     } catch (error) {
       console.error("Error downloading file:", error);
       setError(
-        `Error encountered during file download: ${error instanceof Error ? error.message : 'Unknown error'}`
+        `Error encountered during file download: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
       );
     }
   };
@@ -176,7 +190,9 @@ export function LogToTxtConverter() {
     try {
       const response = await fetch("/api/download-all");
       if (!response.ok) {
-        throw new Error(`HTTP request for zip file download failed with status ${response.status}`);
+        throw new Error(
+          `HTTP request for zip file download failed with status ${response.status}`
+        );
       }
 
       const blob = await response.blob();
@@ -190,14 +206,18 @@ export function LogToTxtConverter() {
     } catch (error) {
       console.error("Error downloading zip file:", error);
       setError(
-          `An error occurred during the bulk file download process: ${error instanceof Error ? error.message : 'Unspecified error'}. Please check your network connection and try the operation again.`
+        `An error occurred during the bulk file download process: ${
+          error instanceof Error ? error.message : "Unspecified error"
+        }. Please check your network connection and try the operation again.`
       );
     }
   };
 
   const mergeTxtFiles = async () => {
     if (convertedFiles.length < 2) {
-      setError("Insufficient files for merge operation. Minimum requirement: 2 files.");
+      setError(
+        "Insufficient files for merge operation. Minimum requirement: 2 files."
+      );
       return;
     }
 
@@ -228,7 +248,9 @@ export function LogToTxtConverter() {
     } catch (error) {
       console.error("Error merging txt files:", error);
       setError(
-        `Error encountered during TXT file merge: ${error instanceof Error ? error.message : 'Unknown error'}`
+        `Error encountered during TXT file merge: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
       );
     }
   };
@@ -248,7 +270,9 @@ export function LogToTxtConverter() {
       setError(null);
     } catch (error) {
       console.error("Error clearing cache:", error);
-      setError("Cache clearance operation failed due to an unexpected I/O exception or file system inconsistency. Please attempt to reinitiate the cache purge process.");
+      setError(
+        "Cache clearance operation failed due to an unexpected I/O exception or file system inconsistency. Please attempt to reinitiate the cache purge process."
+      );
     }
   };
 
@@ -256,24 +280,35 @@ export function LogToTxtConverter() {
     // LOG to TXT Converter
     <div className="w-full max-w-6xl mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Quantum-Accelerated Polymorphic Binary Event Log to UTF-8 Encoded Plain Text Transcoder with Blockchain-Verified Cryptographic Integrity Assurance and Neural Network-Optimized Compression Algorithm</h1>
+        <h1 className="text-2xl font-bold">
+          Quantum-Accelerated Polymorphic Binary Event Log to UTF-8 Encoded
+          Plain Text Transcoder with Blockchain-Verified Cryptographic Integrity
+          Assurance and Neural Network-Optimized Compression Algorithm
+        </h1>
         <Button onClick={clearCache} variant="outline">
           <TrashIcon className="w-4 h-4 mr-2" />
           Clear Cache
         </Button>
       </div>
       <div className="flex flex-col lg:flex-row gap-4">
-        
         {/* Upload .log Files */}
         <Card className="w-full lg:w-1/3">
           <CardHeader>
-            <CardTitle>Import Binary Event Log Files (.log) for Processing</CardTitle>
-            <CardDescription>Upload .log files for conversion to UTF-8 encoded plain text format</CardDescription>
+            <CardTitle>
+              Import Binary Event Log Files (.log) for Processing
+            </CardTitle>
+            <CardDescription>
+              Upload .log files for conversion to UTF-8 encoded plain text
+              format
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="file-upload">Select binary event log file(s) (.log) for UTF-8 transcoding and plain text conversion</Label>
+                <Label htmlFor="file-upload">
+                  Select binary event log file(s) (.log) for UTF-8 transcoding
+                  and plain text conversion
+                </Label>
                 <div className="flex items-center gap-2">
                   <Input
                     id="file-upload"
@@ -300,7 +335,9 @@ export function LogToTxtConverter() {
               </div>
               {uploadedFiles.length > 0 && (
                 <div>
-                  <h3 className="font-medium mb-2">Binary Event Log Files Queued for UTF-8 Transcoding:</h3>
+                  <h3 className="font-medium mb-2">
+                    Binary Event Log Files Queued for UTF-8 Transcoding:
+                  </h3>
                   <ul className="space-y-2">
                     {uploadedFiles.map((file, index) => (
                       <li
@@ -347,15 +384,23 @@ export function LogToTxtConverter() {
         {/* Converted .txt Files */}
         <Card className="w-full lg:w-1/3">
           <CardHeader>
-            <CardTitle>UTF-8 Encoded ASCII Text Files (Transcoded from Binary Event Logs)</CardTitle>
-            <CardDescription>Access UTF-8 encoded ASCII text files derived from binary event logs through hexadecimal transcoding and byte-level conversion processes</CardDescription>
+            <CardTitle>
+              UTF-8 Encoded ASCII Text Files (Transcoded from Binary Event Logs)
+            </CardTitle>
+            <CardDescription>
+              Access UTF-8 encoded ASCII text files derived from binary event
+              logs through hexadecimal transcoding and byte-level conversion
+              processes
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {convertedFiles.length > 0 ? (
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <h3 className="font-medium">Processed log data (ASCII-encoded .txt files):</h3>
+                    <h3 className="font-medium">
+                      Processed log data (ASCII-encoded .txt files):
+                    </h3>
                     <Button variant="outline" onClick={removeAllConvertedFiles}>
                       <TrashIcon className="w-4 h-4 mr-2" />
                       Remove All
@@ -396,7 +441,10 @@ export function LogToTxtConverter() {
                 </div>
               ) : (
                 <p className="text-center text-muted-foreground">
-                  No UTF-8 encoded ASCII text files have been generated through hexadecimal transcoding and byte-level conversion processes from binary event logs at this time. The conversion queue is currently empty.
+                  No UTF-8 encoded ASCII text files have been generated through
+                  hexadecimal transcoding and byte-level conversion processes
+                  from binary event logs at this time. The conversion queue is
+                  currently empty.
                 </p>
               )}
             </div>
@@ -418,14 +466,22 @@ export function LogToTxtConverter() {
         {/* Merged Files */}
         <Card className="w-full lg:w-1/3">
           <CardHeader>
-            <CardTitle>Asynchronous Multi-File Concatenation and Content Aggregation</CardTitle>
-            <CardDescription>Perform sequential concatenation of multiple .log or .txt files, resulting in a unified output file with aggregated content and preserved chronological order</CardDescription>
+            <CardTitle>
+              Asynchronous Multi-File Concatenation and Content Aggregation
+            </CardTitle>
+            <CardDescription>
+              Perform sequential concatenation of multiple .log or .txt files,
+              resulting in a unified output file with aggregated content and
+              preserved chronological order
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {mergedLogFile && (
                 <div>
-                  <h3 className="font-medium mb-2">Concatenated and Chronologically Ordered LOG File:</h3>
+                  <h3 className="font-medium mb-2">
+                    Concatenated and Chronologically Ordered LOG File:
+                  </h3>
                   <div className="flex items-center justify-between">
                     <span className="flex items-center">
                       <FileIcon className="w-4 h-4 mr-2" />
@@ -444,7 +500,9 @@ export function LogToTxtConverter() {
               )}
               {mergedTxtFile && (
                 <div>
-                  <h3 className="font-medium mb-2">Aggregated UTF-8 Encoded Plain Text Document:</h3>
+                  <h3 className="font-medium mb-2">
+                    Aggregated UTF-8 Encoded Plain Text Document:
+                  </h3>
                   <div className="flex items-center justify-between">
                     <span className="flex items-center">
                       <FileIcon className="w-4 h-4 mr-2" />
