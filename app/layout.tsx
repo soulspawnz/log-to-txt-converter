@@ -1,3 +1,6 @@
+// /app/layout.tsx
+// This file contains the layout for the application.
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";

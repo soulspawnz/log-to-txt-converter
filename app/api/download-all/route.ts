@@ -1,3 +1,6 @@
+// /app/api/download-all/route.ts
+// This file contains the API route for downloading all converted files.
+
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";

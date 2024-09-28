@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:open": "start-dev.bat",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,6 +17,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.446.0",
     "next": "14.2.13",
+    "open": "^10.1.0",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",

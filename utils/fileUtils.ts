@@ -1,22 +1,30 @@
-import * as fs from 'fs';
-import path from 'path';
-import { existsSync, mkdirSync } from 'fs';
+// /utils/fileUtils.ts
+// This file contains utility functions for file operations.
 
-export function ensureConvertedDirExists() {
-  const convertedDir = path.join(process.cwd(), 'public', 'converted');
-  if (!existsSync(convertedDir)) {
-    mkdirSync(convertedDir, { recursive: true });
+"use server";
+
+import * as fs from "fs/promises";
+import path from "path";
+
+export async function ensureConvertedDirExists() {
+  const convertedDir = path.join(process.cwd(), "public", "converted");
+  try {
+    await fs.access(convertedDir);
+  } catch {
+    await fs.mkdir(convertedDir, { recursive: true });
   }
 }
 
-export function emptyConvertedDir() {
-  const convertedDir = path.join(process.cwd(), 'public', 'converted');
-  if (fs.existsSync(convertedDir)) {
-    const files = fs.readdirSync(convertedDir);
+export async function emptyConvertedDir() {
+  const convertedDir = path.join(process.cwd(), "public", "converted");
+  try {
+    const files = await fs.readdir(convertedDir);
     for (const file of files) {
-      if (file.endsWith('.txt')) {
-        fs.unlinkSync(path.join(convertedDir, file));
+      if (file.endsWith(".txt")) {
+        await fs.unlink(path.join(convertedDir, file));
       }
     }
+  } catch (error) {
+    console.error("Error emptying converted directory:", error);
   }
 }
